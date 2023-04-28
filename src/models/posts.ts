@@ -6,4 +6,5 @@ export interface Post {
 	userId: string;
 	content: string;
 	comments: Comment[];
+	createdAt: string;
 }

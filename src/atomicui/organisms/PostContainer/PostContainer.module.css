@@ -1,0 +1,32 @@
+.post-container {
+	@apply flex flex-col gap-2 mx-auto w-[80%] rounded-lg;
+	@apply bg-white border border-gray-200 mb-5;
+}
+
+.post-subcontainer {
+	@apply pt-6 px-4 pb-2;
+}
+
+.post-picture {
+	@apply inline-flex items-center justify-center w-[50px] h-[50px] rounded-lg;
+}
+
+.post-metadata {
+	@apply flex gap-3 mb-6;
+}
+
+.post-name {
+	@apply self-center text-primary font-bold text-lg;
+}
+
+.post-time {
+	@apply self-center font-normal text-sm;
+}
+
+.post-title {
+	@apply font-extrabold text-xl text-secondary mb-4;
+}
+
+.post-content {
+	@apply font-normal text-base text-primary;
+}

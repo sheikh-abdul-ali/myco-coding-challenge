@@ -1,0 +1,30 @@
+.main {
+	@apply flex flex-col bg-[#f7f9fa] p-12;
+}
+
+.create-post-container {
+	@apply bg-white rounded-lg mx-auto w-[80%] p-4 flex items-center justify-between;
+}
+
+.create-post-container:hover {
+	backdrop-filter: blur(2.9px);
+	-webkit-backdrop-filter: blur(2.9px);
+	@apply shadow-[0_3px_10px_rgb(0,0,0,0.2)];
+}
+
+.avatar-typography {
+	@apply flex gap-4 items-center;
+}
+
+.avatar {
+	@apply inline-flex items-center justify-center w-[50px] h-[50px] rounded-lg;
+}
+
+.icon {
+	@apply bg-gray-100 border border-gray-200 rounded-md;
+	@apply flex items-center justify-center w-9 h-9;
+}
+
+.main-wrapper {
+	@apply mt-4;
+}

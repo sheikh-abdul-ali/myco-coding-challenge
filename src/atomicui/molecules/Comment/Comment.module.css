@@ -1,0 +1,27 @@
+.comment {
+	@apply mt-8;
+	@apply flex gap-4;
+}
+
+.comment-picture {
+	@apply inline-flex items-center justify-center w-10 h-10 rounded-lg;
+}
+
+.comment-body {
+	@apply flex flex-col gap-4;
+}
+.comment-metadata {
+	@apply flex gap-2;
+}
+
+.comment-name {
+	@apply text-base font-bold self-center text-secondary;
+}
+
+.comment-time {
+	@apply text-sm font-normal self-center text-secondary;
+}
+
+.comment-content {
+	@apply text-base font-normal;
+}

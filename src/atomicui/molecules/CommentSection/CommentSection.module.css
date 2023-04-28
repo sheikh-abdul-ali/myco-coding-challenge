@@ -1,0 +1,31 @@
+.comment-container {
+	@apply w-full border-t border-gray-200 py-5 px-4;
+}
+
+.comment-header {
+	@apply flex justify-between;
+}
+
+.comment-button {
+	@apply flex gap-2 items-center cursor-pointer;
+}
+
+.comment-picture {
+	@apply inline-flex items-center justify-center w-10 h-10 rounded-lg;
+}
+
+.comment {
+	@apply mt-8 flex gap-4;
+}
+
+.comment-textarea-wrapper {
+	@apply w-full flex flex-col border border-gray-300 rounded-lg;
+}
+
+.comment-input {
+	@apply w-full p-2 outline-none resize-none border-0 rounded-lg;
+}
+
+.button-wrapper {
+	@apply w-full p-4 flex justify-end;
+}

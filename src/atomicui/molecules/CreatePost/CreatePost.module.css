@@ -1,0 +1,19 @@
+.title {
+	@apply border-0 p-0 resize-none outline-none overflow-hidden text-2xl font-bold;
+}
+
+.post {
+	@apply border-0 p-0 resize-none outline-none min-h-[300px] max-h-[600px];
+}
+
+.post::-webkit-scrollbar {
+	display: none;
+}
+
+.textarea-wrapper {
+	@apply flex flex-col;
+}
+
+.modal-footer {
+	@apply mt-4 flex flex-row-reverse;
+}

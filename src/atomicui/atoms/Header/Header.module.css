@@ -1,0 +1,18 @@
+.header {
+	@apply bg-primary h-16 flex;
+	@apply items-center justify-end;
+	@apply px-[10%];
+	@apply text-white;
+}
+
+.header-container {
+	@apply mx-auto w-full;
+}
+
+.header-subcontainer {
+	@apply flex items-center justify-end h-full;
+}
+
+.header-button {
+	@apply text-white hover:text-gray-300;
+}
