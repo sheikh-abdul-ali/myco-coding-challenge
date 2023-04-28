@@ -1,11 +1,17 @@
-import { useId, useMemo, useReducer } from "react";
+import { useMemo, useReducer } from "react";
 
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
+import { v4 as uuid } from "uuid";
+
+import { ReactComponent as Logo } from "assets/logo.svg";
+
+import badge from "../../assets/badge.svg";
 import key from "../../assets/key.svg";
 import mail from "../../assets/mail.svg";
 
-import { usersData } from "../../data/usersData";
+import { addUserToList } from "../../data/usersData";
 import { userAtom } from "../../store/userAtom";
 
 import "./SignUp.css";
@@ -28,9 +34,9 @@ const formReducer = (state, action) => {
 };
 
 const SignUp = () => {
-	const id = useId();
 	const [state, dispatch] = useReducer(formReducer, initialFormState);
 	const setUser = useSetRecoilState(userAtom);
+	const navigate = useNavigate();
 
 	const handleTextChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch({
@@ -44,9 +50,10 @@ const SignUp = () => {
 		const { name, email, password, confirmPassword } = state;
 		//TODO: error handling
 		if (password === confirmPassword) {
-			const user = { id, name, email, password };
+			const user = { id: uuid(), name, email, password };
 			setUser(user);
-			usersData.push(user);
+			addUserToList(user);
+			navigate("/");
 		}
 	};
 
@@ -58,6 +65,7 @@ const SignUp = () => {
 	return (
 		<div className="box">
 			<div className="signup-container">
+				<Logo />
 				<form className="form" onSubmit={handleSubmit}>
 					<h1>Create Account</h1>
 					<div className="input-container">
@@ -72,7 +80,7 @@ const SignUp = () => {
 						/>
 					</div>
 					<div className="input-container">
-						<img src={mail} />
+						<img src={badge} />
 						<input
 							className="input-field"
 							required

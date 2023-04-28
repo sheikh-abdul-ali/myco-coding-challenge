@@ -1,14 +1,16 @@
-import { useId, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { useRecoilValue } from "recoil";
 
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
 
 import avatar from "../../assets/avatar.png";
 import comment from "../../assets/comment.svg";
-import { usersData } from "../../data/usersData";
+import { getUsers } from "../../data/usersData";
+import useAutosizeTextArea from "../../hooks/useAutosizeTextArea";
 import { userAtom } from "../../store/userAtom";
-import useAutosizeTextArea from "../Modal/useAutosizeTextArea";
+
+import { Button } from "../Button";
 
 import "./CommentSection.css";
 
@@ -20,15 +22,14 @@ const CommentSection = ({ comments, addCommentToPost, postId }) => {
 	const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
 	useAutosizeTextArea(textAreaRef.current, commentText);
-	console.log(commentText);
 
 	const handleTextChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setCommentText(evt.target.value);
 	};
 
-	const handleClick = () => setShowComments(true);
+	const handleClick = () => setShowComments(!showComments);
 	const handleSubmit = () => {
-		addCommentToPost(postId, { id: uuidv4(), content: commentText, userId: user.id });
+		addCommentToPost(postId, { id: uuid(), content: commentText, userId: user.id });
 		setCommentText("");
 	};
 
@@ -43,9 +44,7 @@ const CommentSection = ({ comments, addCommentToPost, postId }) => {
 			</div>
 			{!!showComments &&
 				comments.map(({ id, content, userId }) => {
-					const user = usersData.find(user => user.id === userId);
-					console.log("🚀 ~ file: CommentSection.tsx:45 ~ comments.map ~ usersData:", usersData);
-
+					const user = getUsers().find(user => user.id === userId);
 					return (
 						<div className="comment" key={id}>
 							<div className="comment-avatar">
@@ -78,7 +77,7 @@ const CommentSection = ({ comments, addCommentToPost, postId }) => {
 							placeholder="What are your thoughts?"
 						></textarea>
 						<div className="button-wrapper">
-							<button onClick={handleSubmit}>Post</button>
+							<Button name="Post" handleClick={handleSubmit} isDisabled={!commentText} />
 						</div>
 					</div>
 				</div>

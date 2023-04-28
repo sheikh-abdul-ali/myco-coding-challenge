@@ -1,15 +1,15 @@
-import React, { useId, useMemo, useReducer, useRef } from "react";
+import React, { useMemo, useReducer, useRef } from "react";
 
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import { v4 as uuid } from "uuid";
 
-import { postsData } from "../../data/postsData";
+import useAutosizeTextArea from "../../hooks/useAutosizeTextArea";
 import { postAtom } from "../../store/postAtom";
 
 import { userAtom } from "../../store/userAtom";
+import { Button } from "../Button";
 import Modal from "../Modal/Modal";
-import useAutosizeTextArea from "../Modal/useAutosizeTextArea";
 
 import "./CreatePost.css";
 
@@ -50,9 +50,7 @@ const CreatePost = ({ onClose }) => {
 	//TODO: Convert to Usecallback
 	const handleSubmit = event => {
 		event.preventDefault();
-		setPosts(oldPosts => [...oldPosts, { id: uuid, ...state, userId: user.id }]);
-		postsData.push({ id: uuid, ...state, userId: user.id });
-		console.log(postsData);
+		setPosts(oldPosts => [...oldPosts, { ...state, userId: user.id, id: uuid() }]);
 		onClose();
 	};
 
@@ -82,9 +80,7 @@ const CreatePost = ({ onClose }) => {
 					></textarea>
 				</div>
 				<div className="modal-footer">
-					<button type="submit" disabled={!validForm}>
-						Publish post
-					</button>
+					<Button name="Publish post" type="submit" isDisabled={!validForm} />
 				</div>
 			</form>
 		</Modal>
