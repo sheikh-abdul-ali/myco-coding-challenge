@@ -1,17 +1,17 @@
-import { useMemo, useReducer } from "react";
+import { useMemo, useReducer, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { v4 as uuid } from "uuid";
 
-import { ReactComponent as Logo } from "assets/logo.svg";
-
 import badge from "../../assets/badge.svg";
+import person from "../../assets/icons8-person-80.png";
 import key from "../../assets/key.svg";
 import mail from "../../assets/mail.svg";
 
-import { addUserToList } from "../../data/usersData";
+import { Button } from "../../components/Button";
+import { addUserToList, getUsers } from "../../data/usersData";
 import { userAtom } from "../../store/userAtom";
 
 import "./SignUp.css";
@@ -34,11 +34,14 @@ const formReducer = (state, action) => {
 };
 
 const SignUp = () => {
+	const [errorMessage, setErrorMessage] = useState<string>("");
 	const [state, dispatch] = useReducer(formReducer, initialFormState);
 	const setUser = useSetRecoilState(userAtom);
 	const navigate = useNavigate();
 
 	const handleTextChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+		if (errorMessage) setErrorMessage("");
+
 		dispatch({
 			type: "HANDLE INPUT TEXT",
 			name: evt.target.name,
@@ -49,12 +52,18 @@ const SignUp = () => {
 		event.preventDefault();
 		const { name, email, password, confirmPassword } = state;
 		//TODO: error handling
+		const emailExist = getUsers().some(user => user.email === email);
+		if (emailExist) {
+			return setErrorMessage("Email already exists. Please try logging in.");
+		}
 		if (password === confirmPassword) {
 			const user = { id: uuid(), name, email, password };
 			setUser(user);
 			addUserToList(user);
 			navigate("/");
+			return;
 		}
+		return setErrorMessage("Passwords didn't match");
 	};
 
 	const validForm = useMemo(() => {
@@ -65,9 +74,9 @@ const SignUp = () => {
 	return (
 		<div className="box">
 			<div className="signup-container">
-				<Logo />
+				<img src={person} />
 				<form className="form" onSubmit={handleSubmit}>
-					<h1>Create Account</h1>
+					<p className="welcome-text">Let&#39;s Get Started!</p>
 					<div className="input-container">
 						<img src={mail} />
 						<input
@@ -112,9 +121,13 @@ const SignUp = () => {
 							name="confirmPassword"
 						/>
 					</div>
-					<button type="submit" disabled={!validForm}>
-						Register
-					</button>
+					{!!errorMessage && <p className="error-text">{errorMessage}</p>}
+					<div className="button-container">
+						<Button type="submit" isDisabled={!validForm} name={"Register"} size="lg" />
+					</div>
+					<div className="login-text">
+						Already have an account?&nbsp;<Link to="/signin">Login</Link>
+					</div>
 				</form>
 			</div>
 		</div>

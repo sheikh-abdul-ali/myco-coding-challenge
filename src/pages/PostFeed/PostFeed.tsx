@@ -8,7 +8,7 @@ import avatar from "../../assets/avatar.png";
 
 import CommentSection from "../../components/CommentSection/CommentSection";
 import CreatePost from "../../components/CreatePost/CreatePost";
-import { getUsers, usersData } from "../../data/usersData";
+import { getUsers } from "../../data/usersData";
 import { postAtom } from "../../store/postAtom";
 import "./PostFeed.css";
 
