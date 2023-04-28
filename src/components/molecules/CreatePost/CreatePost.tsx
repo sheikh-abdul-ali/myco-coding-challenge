@@ -1,17 +1,23 @@
-import React, { useMemo, useReducer, useRef } from "react";
+import React, { FC, useMemo, useReducer, useRef } from "react";
 
+import dayjs from "dayjs";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import { v4 as uuid } from "uuid";
 
-import useAutosizeTextArea from "../../hooks/useAutosizeTextArea";
-import { postAtom } from "../../store/postAtom";
+import styles from "./CreatePost.module.css";
 
-import { userAtom } from "../../store/userAtom";
-import { Button } from "../Button";
-import Modal from "../Modal/Modal";
+import useAutosizeTextArea from "../../../hooks/useAutosizeTextArea";
+import { postAtom } from "../../../store/postAtom";
 
-import "./CreatePost.css";
+import { userAtom } from "../../../store/userAtom";
+import { formReducer } from "../../../utils/formReducer";
+import { Button } from "../../atoms/Button";
+import { Modal } from "../../atoms/Modal";
+
+interface ICreatePostProps {
+	onClose: () => void;
+}
 
 const initialFormState = {
 	title: "",
@@ -20,17 +26,7 @@ const initialFormState = {
 	comments: []
 };
 
-const formReducer = (state, action) => {
-	switch (action.type) {
-		case "HANDLE INPUT TEXT":
-			return {
-				...state,
-				[action.name]: action.payload
-			};
-	}
-};
-
-const CreatePost = ({ onClose }) => {
+const CreatePost: FC<ICreatePostProps> = ({ onClose }) => {
 	const [state, dispatch] = useReducer(formReducer, initialFormState);
 	const setPosts = useSetRecoilState(postAtom);
 	const user = useRecoilValue(userAtom);
@@ -47,10 +43,9 @@ const CreatePost = ({ onClose }) => {
 		});
 	};
 
-	//TODO: Convert to Usecallback
-	const handleSubmit = event => {
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		setPosts(oldPosts => [...oldPosts, { ...state, userId: user.id, id: uuid() }]);
+		setPosts(oldPosts => [{ ...state, userId: user.id, id: uuid(), createdAt: dayjs().toISOString() }, ...oldPosts]);
 		onClose();
 	};
 
@@ -58,12 +53,13 @@ const CreatePost = ({ onClose }) => {
 		const { title, content } = state;
 		return !!title && !!content;
 	}, [state]);
+
 	return (
 		<Modal title="Create Post" onClose={onClose}>
 			<form onSubmit={handleSubmit}>
-				<div className="textarea-wrapper">
+				<div className={styles["textarea-wrapper"]}>
 					<textarea
-						className="title"
+						className={styles["title"]}
 						name="title"
 						onChange={handleTextChange}
 						ref={textAreaRef}
@@ -72,15 +68,15 @@ const CreatePost = ({ onClose }) => {
 						maxLength={255}
 					></textarea>
 					<textarea
-						className="post"
+						className={styles["post"]}
 						onChange={handleTextChange}
 						name="content"
 						rows={20}
 						placeholder="Write something..."
 					></textarea>
 				</div>
-				<div className="modal-footer">
-					<Button name="Publish post" type="submit" isDisabled={!validForm} />
+				<div className={styles["modal-footer"]}>
+					<Button name="Publish post" type="submit" isDisabled={!validForm} size="sm" />
 				</div>
 			</form>
 		</Modal>

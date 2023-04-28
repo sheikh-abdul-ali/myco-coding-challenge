@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 
 import styles from "./Button.module.css";
 
@@ -9,7 +9,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	size: string;
 }
 
-const Button = ({ name, handleClick, isDisabled, size, ...rest }: IButtonProps) => {
+const Button: FC<IButtonProps> = ({ name, handleClick, isDisabled, size, ...rest }) => {
 	return (
 		<button
 			className={size === "lg" ? styles["button-lg"] : styles.button}

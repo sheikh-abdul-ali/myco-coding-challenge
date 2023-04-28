@@ -7,7 +7,7 @@ import styles from "./SignIn.module.css";
 
 import { Key, Mail } from "../../assets";
 import person from "../../assets/icons8-person-80.png";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/atoms/Button";
 import { getUsers } from "../../data/usersData";
 import { User } from "../../models/user";
 import { userAtom } from "../../store/userAtom";

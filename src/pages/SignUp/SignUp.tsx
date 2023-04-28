@@ -11,7 +11,7 @@ import person from "../../assets/icons8-person-80.png";
 import key from "../../assets/key.svg";
 import mail from "../../assets/mail.svg";
 
-import { Button } from "../../components/Button";
+import { Button } from "../../components/atoms/Button";
 import { addUserToList, getUsers } from "../../data/usersData";
 import { userAtom } from "../../store/userAtom";
 

@@ -1,0 +1,24 @@
+.modal {
+	@apply fixed top-0 left-0 w-full h-full overflow-auto bg-black bg-opacity-40 z-10;
+	@apply flex justify-center items-center;
+}
+
+.modal-header {
+	@apply w-full flex justify-between mb-5;
+}
+
+.modal-content {
+	@apply bg-white rounded-lg mx-auto p-5 border border-gray-400 w-[70%];
+}
+
+.textarea-wrapper {
+	@apply flex flex-col;
+}
+
+.modal-title {
+	@apply text-2xl font-bold text-primary;
+}
+
+.close-icon {
+	@apply cursor-pointer;
+}
