@@ -15,11 +15,11 @@
 }
 
 .comment-name {
-	@apply text-base font-bold;
+	@apply text-base font-bold self-center text-secondary;
 }
 
 .comment-time {
-	@apply text-base font-normal;
+	@apply text-sm font-normal self-center text-secondary;
 }
 
 .comment-content {

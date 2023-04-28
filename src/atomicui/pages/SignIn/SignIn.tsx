@@ -3,15 +3,16 @@ import { useMemo, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
+import person from "assets/person.png";
+
 import styles from "./SignIn.module.css";
 
-import { Key, Mail } from "../../assets";
-import person from "../../assets/icons8-person-80.png";
-import { Button } from "../../components/atoms/Button";
-import { getUsers } from "../../data/usersData";
-import { User } from "../../models/user";
-import { userAtom } from "../../store/userAtom";
-import { formReducer } from "../../utils/formReducer";
+import { Key, Mail } from "../../../assets";
+import { getUsers } from "../../../data/usersData";
+import { User } from "../../../models/user";
+import { userAtom } from "../../../store/userAtom";
+import { formReducer } from "../../../utils/formReducer";
+import { Button } from "../../atoms/Button";
 
 const initialFormState = {
 	email: "",
@@ -71,7 +72,7 @@ const SignIn = () => {
 					<div className={styles["input-container"]}>
 						<Key />
 						<input
-							className="input-field"
+							className={styles["input-field"]}
 							required
 							onChange={handleTextChange}
 							type="password"

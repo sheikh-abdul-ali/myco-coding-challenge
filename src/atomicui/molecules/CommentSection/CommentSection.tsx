@@ -64,7 +64,7 @@ const CommentSection: FC<ICommentSectionProps> = ({ comments, addCommentToPost, 
 			</div>
 			{!!showComments && showCommentBlock}
 
-			{!!showComments && (
+			{!!showComments && !!user.id && (
 				<div className={styles["comment"]}>
 					<div>
 						<img src={avatar} className={styles["comment-picture"]} />

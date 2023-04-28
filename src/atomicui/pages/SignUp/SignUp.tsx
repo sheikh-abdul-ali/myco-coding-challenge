@@ -5,18 +5,18 @@ import { useSetRecoilState } from "recoil";
 
 import { v4 as uuid } from "uuid";
 
-import { Badge, Key, Mail } from "../../assets";
-import badge from "../../assets/badge.svg";
-import person from "../../assets/icons8-person-80.png";
-import key from "../../assets/key.svg";
-import mail from "../../assets/mail.svg";
+import person from "assets/person.png";
 
-import { Button } from "../../components/atoms/Button";
-import { addUserToList, getUsers } from "../../data/usersData";
-import { userAtom } from "../../store/userAtom";
+import styles from "./SignUp.module.css";
 
-import "./SignUp.css";
-import { formReducer } from "../../utils/formReducer";
+import { Badge, Key, Mail } from "../../../assets";
+
+import { addUserToList, getUsers } from "../../../data/usersData";
+import { User } from "../../../models/user";
+import { userAtom } from "../../../store/userAtom";
+
+import { formReducer } from "../../../utils/formReducer";
+import { Button } from "../../atoms/Button";
 
 const initialFormState = {
 	name: "",
@@ -43,7 +43,7 @@ const SignUp = () => {
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const { name, email, password, confirmPassword } = state;
-		const emailExist = getUsers().some(user => user.email === email);
+		const emailExist = getUsers().some((user: User) => user.email === email);
 		if (emailExist) {
 			return setErrorMessage("Email already exists. Please try logging in.");
 		}
@@ -63,15 +63,15 @@ const SignUp = () => {
 	}, [state]);
 
 	return (
-		<div className="box">
-			<div className="signup-container">
+		<div className={styles["signup-page"]}>
+			<div className={styles["signup-container"]}>
 				<img src={person} />
-				<form className="form" onSubmit={handleSubmit}>
-					<p className="welcome-text">Let&#39;s Get Started!</p>
-					<div className="input-container">
+				<form className={styles["signup-form"]} onSubmit={handleSubmit}>
+					<p className={styles["welcome-text"]}>Let&#39;s Get Started!</p>
+					<div className={styles["input-container"]}>
 						<Mail />
 						<input
-							className="input-field"
+							className={styles["input-field"]}
 							required
 							onChange={handleTextChange}
 							type="email"
@@ -79,10 +79,10 @@ const SignUp = () => {
 							name="email"
 						/>
 					</div>
-					<div className="input-container">
+					<div className={styles["input-container"]}>
 						<Badge />
 						<input
-							className="input-field"
+							className={styles["input-field"]}
 							required
 							onChange={handleTextChange}
 							type="name"
@@ -90,10 +90,10 @@ const SignUp = () => {
 							name="name"
 						/>
 					</div>
-					<div className="input-container">
+					<div className={styles["input-container"]}>
 						<Key />
 						<input
-							className="input-field"
+							className={styles["input-field"]}
 							required
 							onChange={handleTextChange}
 							type="password"
@@ -101,10 +101,10 @@ const SignUp = () => {
 							name="password"
 						/>
 					</div>
-					<div className="input-container">
+					<div className={styles["input-container"]}>
 						<Key />
 						<input
-							className="input-field"
+							className={styles["input-field"]}
 							required
 							onChange={handleTextChange}
 							type="password"
@@ -112,13 +112,13 @@ const SignUp = () => {
 							name="confirmPassword"
 						/>
 					</div>
-					{!!errorMessage && <p className="error-text">{errorMessage}</p>}
-					<div className="button-container">
+					{!!errorMessage && <p className={styles["error-text"]}>{errorMessage}</p>}
+					<div className={styles["button-container"]}>
 						<Button type="submit" isDisabled={!validForm} name={"Register"} size="lg" />
 					</div>
-					<div className="login-text">
+					<div className={styles["login-text"]}>
 						Already have an account?&nbsp;
-						<Link to="/signin" className="login-span">
+						<Link to="/signin" className={styles["login-span"]}>
 							Login
 						</Link>
 					</div>

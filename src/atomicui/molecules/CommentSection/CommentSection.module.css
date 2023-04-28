@@ -1,5 +1,5 @@
 .comment-container {
-	@apply w-full border-t border-gray-200 py-3 px-4;
+	@apply w-full border-t border-gray-200 py-5 px-4;
 }
 
 .comment-header {

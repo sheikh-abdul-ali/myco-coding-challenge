@@ -1,3 +1,4 @@
+export { ReactComponent as Add } from "./add.svg";
 export { ReactComponent as Close } from "./close.svg";
 export { ReactComponent as Key } from "./key.svg";
 export { ReactComponent as Mail } from "./mail.svg";

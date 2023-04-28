@@ -21,6 +21,7 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			assets: path.resolve(__dirname, "./src/assets"),
+			atomicui: path.resolve(__dirname, "./src/atomicui"),
 			core: path.resolve(__dirname, "./src/core"),
 			components: path.resolve(__dirname, "./src/components"),
 			data: path.resolve(__dirname, "./src/data"),
