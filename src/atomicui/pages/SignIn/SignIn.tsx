@@ -1,4 +1,4 @@
-import { useMemo, useReducer, useState } from "react";
+import { FC, useMemo, useReducer, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
@@ -19,7 +19,7 @@ const initialFormState = {
 	password: ""
 };
 
-const SignIn = () => {
+const SignIn: FC = () => {
 	const [errorMessage, setErrorMessage] = useState<string>("");
 	const [state, dispatch] = useReducer(formReducer, initialFormState);
 	const setUser = useSetRecoilState(userAtom);

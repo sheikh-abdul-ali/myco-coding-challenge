@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
@@ -18,7 +18,7 @@ import { Header } from "../../atoms/Header";
 import { CreatePost } from "../../molecules/CreatePost";
 import { PostContainer } from "../../organisms/PostContainer";
 
-const PostFeed = () => {
+const PostFeed: FC = () => {
 	const [open, setOpen] = useState<boolean>(false);
 	const navigate = useNavigate();
 
