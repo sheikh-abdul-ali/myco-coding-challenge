@@ -5,6 +5,7 @@ import { useSetRecoilState } from "recoil";
 
 import { v4 as uuid } from "uuid";
 
+import { Badge, Key, Mail } from "../../assets";
 import badge from "../../assets/badge.svg";
 import person from "../../assets/icons8-person-80.png";
 import key from "../../assets/key.svg";
@@ -15,22 +16,13 @@ import { addUserToList, getUsers } from "../../data/usersData";
 import { userAtom } from "../../store/userAtom";
 
 import "./SignUp.css";
+import { formReducer } from "../../utils/formReducer";
 
 const initialFormState = {
 	name: "",
 	email: "",
 	password: "",
 	confirmPassword: ""
-};
-
-const formReducer = (state, action) => {
-	switch (action.type) {
-		case "HANDLE INPUT TEXT":
-			return {
-				...state,
-				[action.name]: action.payload
-			};
-	}
 };
 
 const SignUp = () => {
@@ -51,7 +43,6 @@ const SignUp = () => {
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const { name, email, password, confirmPassword } = state;
-		//TODO: error handling
 		const emailExist = getUsers().some(user => user.email === email);
 		if (emailExist) {
 			return setErrorMessage("Email already exists. Please try logging in.");
@@ -78,7 +69,7 @@ const SignUp = () => {
 				<form className="form" onSubmit={handleSubmit}>
 					<p className="welcome-text">Let&#39;s Get Started!</p>
 					<div className="input-container">
-						<img src={mail} />
+						<Mail />
 						<input
 							className="input-field"
 							required
@@ -89,7 +80,7 @@ const SignUp = () => {
 						/>
 					</div>
 					<div className="input-container">
-						<img src={badge} />
+						<Badge />
 						<input
 							className="input-field"
 							required
@@ -100,7 +91,7 @@ const SignUp = () => {
 						/>
 					</div>
 					<div className="input-container">
-						<img src={key} />
+						<Key />
 						<input
 							className="input-field"
 							required
@@ -111,7 +102,7 @@ const SignUp = () => {
 						/>
 					</div>
 					<div className="input-container">
-						<img src={key} />
+						<Key />
 						<input
 							className="input-field"
 							required
@@ -126,7 +117,10 @@ const SignUp = () => {
 						<Button type="submit" isDisabled={!validForm} name={"Register"} size="lg" />
 					</div>
 					<div className="login-text">
-						Already have an account?&nbsp;<Link to="/signin">Login</Link>
+						Already have an account?&nbsp;
+						<Link to="/signin" className="login-span">
+							Login
+						</Link>
 					</div>
 				</form>
 			</div>

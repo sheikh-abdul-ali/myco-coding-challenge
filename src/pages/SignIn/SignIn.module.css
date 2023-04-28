@@ -1,0 +1,41 @@
+.signin-page {
+	@apply flex items-center justify-center h-full bg-gray-100 p-12;
+}
+
+.signin-container {
+	@apply flex flex-col items-center bg-white p-6;
+	@apply border border-gray-300 rounded-md w-1/2;
+	@apply shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)];
+}
+
+.signin-form {
+	@apply w-full flex flex-col items-center;
+}
+
+.welcome-text {
+	@apply text-4xl font-bold text-gray-800 my-6;
+}
+
+.input-container {
+	@apply flex items-center w-[65%] mb-3 border-b border-gray-500;
+}
+
+.input-field {
+	@apply w-full p-2.5 outline-none border-0;
+}
+
+.error-text {
+	@apply w-[65%] text-error;
+}
+
+.button-container {
+	@apply my-6;
+}
+
+.register-text {
+	@apply mb-8;
+}
+
+.register-span {
+	@apply font-bold text-green-500;
+}

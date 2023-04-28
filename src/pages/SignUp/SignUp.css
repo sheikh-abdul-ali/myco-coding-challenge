@@ -26,6 +26,7 @@
 	width: 65%;
 	margin-bottom: 15px;
 	border-bottom: 1px solid rgb(121, 121, 121);
+	align-items: center;
 }
 
 .error-text {
@@ -61,4 +62,9 @@
 
 .login-text {
 	margin-bottom: 2rem;
+}
+
+.login-span {
+	color: rgb(33 214 133);
+	font-weight: 700;
 }
