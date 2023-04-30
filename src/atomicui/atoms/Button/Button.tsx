@@ -2,14 +2,16 @@ import { ButtonHTMLAttributes, FC } from "react";
 
 import styles from "./Button.module.css";
 
+type btnSize = "sm" | "md" | "lg";
+
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	name: string;
 	handleClick?: () => void;
 	isDisabled: boolean;
-	size: string;
+	size?: btnSize;
 }
 
-const Button: FC<IButtonProps> = ({ name, handleClick, isDisabled, size, ...rest }) => {
+const Button: FC<IButtonProps> = ({ name, handleClick, isDisabled, size = "sm", ...rest }) => {
 	return (
 		<button
 			className={size === "lg" ? styles["button-lg"] : styles.button}
