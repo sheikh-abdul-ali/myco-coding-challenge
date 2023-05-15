@@ -1,8 +1,8 @@
 import { FC, ReactNode } from "react";
 
-import styles from "./Modal.module.css";
+import { Close } from "assets";
 
-import { Close } from "../../../assets";
+import styles from "./Modal.module.css";
 
 interface IModalProps {
 	children: ReactNode;
@@ -12,11 +12,15 @@ interface IModalProps {
 
 const Modal: FC<IModalProps> = ({ children, title, onClose }) => {
 	return (
-		<div className={styles["modal"]}>
+		<div data-testid="modal" className={styles["modal"]}>
 			<div className={styles["modal-content"]}>
 				<div className={styles["modal-header"]}>
-					<div className={styles["modal-title"]}>{title}</div>
-					<Close className={styles["close-icon"]} onClick={onClose} />
+					<div data-testid="modal-title" className={styles["modal-title"]}>
+						{title}
+					</div>
+					<div data-testid="modal-close" onClick={onClose}>
+						<Close className={styles["close-icon"]} />
+					</div>
 				</div>
 				{children}
 			</div>

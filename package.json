@@ -7,7 +7,9 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"test": "react-scripts test",
+		"coverage": "react-scripts test --coverage --watchAll"
 	},
 	"dependencies": {
 		"dayjs": "^1.11.7",
@@ -15,8 +17,7 @@
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.10.0",
 		"recoil": "^0.7.7",
-		"uuid": "^9.0.0",
-		"vite-plugin-svgr": "^2.4.0"
+		"uuid": "^9.0.0"
 	},
 	"devDependencies": {
 		"@types/node": "^18.11.9",
@@ -42,6 +43,11 @@
 		"ts-node": "^10.9.1",
 		"typescript": "^5.0.2",
 		"vite": "^4.3.0",
-		"vite-plugin-eslint": "^1.7.0"
+		"vite-plugin-eslint": "^1.7.0",
+		"vite-plugin-svgr": "^2.4.0",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"react-scripts": "5.0.1"
 	}
 }

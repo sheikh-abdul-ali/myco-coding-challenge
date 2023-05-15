@@ -11,9 +11,10 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	size?: btnSize;
 }
 
-const Button: FC<IButtonProps> = ({ name, handleClick, isDisabled, size = "sm", ...rest }) => {
+const Button: FC<IButtonProps> = ({ name, handleClick, isDisabled, size = "md", ...rest }) => {
 	return (
 		<button
+			data-testid="button"
 			className={size === "lg" ? styles["button-lg"] : styles.button}
 			onClick={handleClick}
 			disabled={isDisabled}
