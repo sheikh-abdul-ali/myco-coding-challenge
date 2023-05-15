@@ -24,7 +24,7 @@ export default defineConfig(() => {
 				data: path.resolve(__dirname, "./src/data"),
 				hooks: path.resolve(__dirname, "./src/hooks"),
 				services: path.resolve(__dirname, "./src/services"),
-				stores: path.resolve(__dirname, "./src/stores"),
+				store: path.resolve(__dirname, "./src/store"),
 				types: path.resolve(__dirname, "./src/types"),
 				theme: path.resolve(__dirname, "./src/theme"),
 				utils: path.resolve(__dirname, "./src/utils"),

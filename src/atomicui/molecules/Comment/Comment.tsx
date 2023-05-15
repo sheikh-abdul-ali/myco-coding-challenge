@@ -1,9 +1,9 @@
 import { FC } from "react";
 
-import styles from "./Comment.module.css";
+import avatar from "assets/avatar.png";
+import { timeFromNow } from "utils/timeFromNow";
 
-import avatar from "../../../assets/avatar.png";
-import { timeFromNow } from "../../../utils/timeFromNow";
+import styles from "./Comment.module.css";
 
 interface ICommentProps {
 	content: string;

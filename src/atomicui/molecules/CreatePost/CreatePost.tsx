@@ -1,19 +1,17 @@
 import React, { FC, useMemo, useReducer, useRef } from "react";
 
+import { Button } from "atomicui/atoms/Button";
+import { Modal } from "atomicui/atoms/Modal";
 import dayjs from "dayjs";
+import useAutosizeTextArea from "hooks/useAutosizeTextArea";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-
+import { postAtom } from "store/postAtom";
+import { userAtom } from "store/userAtom";
 import { v4 as uuid } from "uuid";
 
+import { formReducer } from "utils/formReducer";
+
 import styles from "./CreatePost.module.css";
-
-import useAutosizeTextArea from "../../../hooks/useAutosizeTextArea";
-import { postAtom } from "../../../store/postAtom";
-
-import { userAtom } from "../../../store/userAtom";
-import { formReducer } from "../../../utils/formReducer";
-import { Button } from "../../atoms/Button";
-import { Modal } from "../../atoms/Modal";
 
 interface ICreatePostProps {
 	onClose: () => void;

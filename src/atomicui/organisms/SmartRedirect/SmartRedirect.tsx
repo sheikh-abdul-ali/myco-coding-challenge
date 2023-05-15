@@ -2,8 +2,7 @@ import { FC, ReactNode, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-
-import { userAtom } from "../../../store/userAtom";
+import { userAtom } from "store/userAtom";
 
 const SmartRedirect: FC<{ children: ReactNode }> = ({ children }) => {
 	const user = useRecoilValue(userAtom);

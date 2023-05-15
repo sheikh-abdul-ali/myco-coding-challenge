@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 
 import { RecoilRoot } from "recoil";
 
-import AppRoutes from "./core/AppRoutes.tsx";
+import AppRoutes from "core/AppRoutes";
 
 import "./index.css";
 

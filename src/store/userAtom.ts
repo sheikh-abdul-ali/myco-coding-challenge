@@ -1,7 +1,7 @@
+import { User } from "models/user";
 import { atom } from "recoil";
 
-import { User } from "../models/user";
-import { localStorageEffect } from "../utils/localStorageEffect";
+import { localStorageEffect } from "utils/localStorageEffect";
 
 export const userAtom = atom<User>({
 	key: "user",

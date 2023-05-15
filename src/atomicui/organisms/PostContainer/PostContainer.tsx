@@ -1,11 +1,12 @@
 import { FC } from "react";
 
-import styles from "./PostContainer.module.css";
+import { CommentSection } from "atomicui/molecules/CommentSection";
+import { Comment } from "models/comment";
 
-import avatar from "../../../assets/avatar.png";
-import { Comment } from "../../../models/comment";
-import { timeFromNow } from "../../../utils/timeFromNow";
-import { CommentSection } from "../../molecules/CommentSection";
+import avatar from "assets/avatar.png";
+import { timeFromNow } from "utils/timeFromNow";
+
+import styles from "./PostContainer.module.css";
 
 interface IPostContainerProps {
 	postId: string;
