@@ -1,18 +1,18 @@
 import { FC, useMemo, useReducer, useState } from "react";
 
+import { Key, Mail } from "assets";
+import { Button } from "atomicui/atoms/Button";
+import { getUsers } from "data/usersData";
+import { User } from "models/user";
 import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import { userAtom } from "store/userAtom";
 
 import person from "assets/person.png";
 
-import styles from "./SignIn.module.css";
+import { formReducer } from "utils/formReducer";
 
-import { Key, Mail } from "../../../assets";
-import { getUsers } from "../../../data/usersData";
-import { User } from "../../../models/user";
-import { userAtom } from "../../../store/userAtom";
-import { formReducer } from "../../../utils/formReducer";
-import { Button } from "../../atoms/Button";
+import styles from "./SignIn.module.css";
 
 const initialFormState = {
 	email: "",

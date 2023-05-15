@@ -1,22 +1,20 @@
 import { FC, useState } from "react";
 
+import { Add } from "assets";
+import { Header } from "atomicui/atoms/Header";
+import { CreatePost } from "atomicui/molecules/CreatePost";
+import { PostContainer } from "atomicui/organisms/PostContainer";
+import { getUsers } from "data/usersData";
+import { Comment } from "models/comment";
+import { User } from "models/user";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
+import { postAtom } from "store/postAtom";
+import { userAtom } from "store/userAtom";
 
 import avatar from "assets/avatar.png";
 
 import styles from "./PostFeed.module.css";
-
-import { Add } from "../../../assets";
-import { getUsers } from "../../../data/usersData";
-import { Comment } from "../../../models/comment";
-import { User } from "../../../models/user";
-import { postAtom } from "../../../store/postAtom";
-import { userAtom } from "../../../store/userAtom";
-
-import { Header } from "../../atoms/Header";
-import { CreatePost } from "../../molecules/CreatePost";
-import { PostContainer } from "../../organisms/PostContainer";
 
 const PostFeed: FC = () => {
 	const [open, setOpen] = useState<boolean>(false);

@@ -1,20 +1,21 @@
 import { FC, useMemo, useRef, useState } from "react";
 
+import { CommentBox } from "assets";
+import { Button } from "atomicui/atoms/Button";
+import { getUsers } from "data/usersData";
 import dayjs from "dayjs";
+import useAutosizeTextArea from "hooks/useAutosizeTextArea";
+import { Comment as CommentModel } from "models/comment";
+import { User } from "models/user";
 import { useRecoilValue } from "recoil";
 
+import { userAtom } from "store/userAtom";
 import { v4 as uuid } from "uuid";
+
+import avatar from "assets/avatar.png";
 
 import styles from "./CommentSection.module.css";
 
-import { CommentBox } from "../../../assets";
-import avatar from "../../../assets/avatar.png";
-import { getUsers } from "../../../data/usersData";
-import useAutosizeTextArea from "../../../hooks/useAutosizeTextArea";
-import { Comment as CommentModel } from "../../../models/comment";
-import { User } from "../../../models/user";
-import { userAtom } from "../../../store/userAtom";
-import { Button } from "../../atoms/Button";
 import { Comment } from "../Comment";
 
 interface ICommentSectionProps {
